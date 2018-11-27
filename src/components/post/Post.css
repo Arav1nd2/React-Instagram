@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+
+.postCard {
+    width: 60%;
+    border-radius: 0 !important;
+}
+.header {
+    padding-bottom: 0px !important;
+}
+.profilepic {
+    border-radius: 50%;
+}
+
+.profileName {
+    margin-left: 10px !important;
+}
+
+
+.postImage {
+    padding: 0px !important;
+    margin-bottom: 10px !important;
+
+}
+
+.commentButton {
+    margin-left: 15px !important;
+}

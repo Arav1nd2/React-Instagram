@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+.comment {
+    font-family: 'Montserrat', sans-serif;
+}
+.line2 {
+    width: 95%;
+    color: dimgrey;
+    margin-top: 2%;
+}
+.addComment {
+    font-family: 'Montserrat', sans-serif;
+    border: 0px;
+    width:95%;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+.time {
+    font-family: 'Montserrat', sans-serif;
+    color: darkgray;
+    font-size: 12px;
+}
+.likes {
+    padding-bottom: 0px !important;
+}
+.comments {
+    padding-top: 0px !important;
+}
+.l {
+    font-family: 'Montserrat', sans-serif;
+}

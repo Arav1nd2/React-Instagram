@@ -1,0 +1,25 @@
+.vl {
+    border-left: 1px solid rgb(163, 161, 161);
+    height: 110px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.logo {
+    margin-left: 20px;
+    margin-right: 0px;
+    margin-bottom: 4px;
+}
+
+.heart {
+    margin-left: 0;
+    margin-right: 30px;
+}
+.compass {
+    margin-right: 40px;
+}
+
+
+.line {
+    margin-top: 0px;   
+}
