@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {CardBody} from 'reactstrap';
+import { withFirebase } from 'react-redux-firebase'
 import './Comments.css';
 import * as moment from 'moment';
 import heart from '../../images/heart.png';
@@ -33,12 +33,30 @@ class Comments extends Component {
                 newComment : "",
                 comments : oldCom
             });
+            this.props.firebase.set(`Posts/${this.props.postId}/comments/`,oldCom,()=>{
+                console.log("Comment added");
+            })
         }
         this.handlelike = () => {
+            if(this.state.likeState) {
+                this.props.firebase.set(`Posts/${this.props.postId}/likes/`,this.state.likes-1,(err)=>{
+                    console.log("likes updated");
+                });
+                this.setState({
+                    likes : this.state.likes-1
+                }); 
+            }
+            else {
+                this.props.firebase.set(`Posts/${this.props.postId}/likes/`,this.state.likes+1,(err)=>{
+                });
+                this.setState({
+                    likes : this.state.likes+1
+                });    
+            }
             this.setState({
-                likes : this.state.likeState ? this.state.likes-1 : this.state.likes+1,
                 likeState : !this.state.likeState
             });
+
         }
     }
     render() {
@@ -55,7 +73,6 @@ class Comments extends Component {
             );
             
         });
-    
         return (
             <div>
                     {this.state.likeState ? <img src= {heart2} alt="" width = "32px" height = "27px" onClick = {this.handlelike}/>:<img src= {heart} alt="" width = "30px" height = "30px" onClick = {this.handlelike}/>}
@@ -73,4 +90,6 @@ class Comments extends Component {
     }
 }
 
-export default Comments;
+
+
+export default withFirebase(Comments);

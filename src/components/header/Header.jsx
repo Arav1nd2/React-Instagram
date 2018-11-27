@@ -34,7 +34,7 @@ class Header extends Component {
             </span>
           </NavbarBrand>
               <div>
-                  <Input type="text" placeholder = "                Search" className = "search" />
+                  <Input type="text" placeholder = "                Search" className = "search" onChange = {this.props.search}/>
               </div>
             <Nav className = "ml-auto" navbar>
               <NavItem>

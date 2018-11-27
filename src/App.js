@@ -1,42 +1,24 @@
 import React, { Component } from 'react';
-import Header from './components/header/Header';
-import Post from './components/post/Post';
-import {connect} from 'react-redux';
-import { firebaseConnect } from 'react-redux-firebase';
-import {compose } from 'redux';
-import './App.css';
-import  ReactLoading from 'react-loading';
+import Postpage from './components/Postpage';
+import {connect } from 'react-redux';
+import Auth from './components/auth/auth';
 
 class App extends Component {
-
   
   render() {
-    let posts = [];
-    let loading;
-    if(this.props.data) {
-
-      for(var i= 0; i<this.props.data.length; i++) {
-        posts.push(
-          <Post key = {i} comment = {this.props.data[i]}/>
-        );
-        }
-    }
-      loading = (<ReactLoading type = {"spin"} color={"grey"} className = "animation" />);
   
     return (
      <div>
-       <Header />
-       {this.props.data ? posts : loading}
+       {this.props.loginState ? <Postpage /> : <Auth/>}
      </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  return {
-      data : state.firebase.ordered.Posts,
-  }
-  
+    return {
+      loginState : !state.firebase.auth.isEmpty
+    }
 }
 
-export default compose(firebaseConnect(['Posts']),connect(mapStateToProps))(App);
+export default connect(mapStateToProps)(App);

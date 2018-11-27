@@ -26,7 +26,6 @@ class Post extends Component {
         const img = this.props.comment.value.thumbnailUrl;
         const userName = this.props.comment.value.username;
         const imgPost = this.props.comment.value.imageUrl;
-        const likes = this.props.comment.value.likes;
         return (
             <div>
                 <br/>
@@ -44,7 +43,7 @@ class Post extends Component {
                             <img src= {imgPost} alt="" width = "100%" />
                         </CardBody>
                         <CardBody className = "comments">
-                            <Comments like = {this.props.comment.value.likes} data = {this.props.comment.value.comments} time ={this.props.comment.value.timestamp} />
+                            <Comments postId = {this.props.postId} like = {this.props.comment.value.likes} data = {this.props.comment.value.comments} time ={this.props.comment.value.timestamp} />
                         </CardBody>
                     </Card>
                     <br/>
