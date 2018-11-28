@@ -5,6 +5,7 @@ import people from '../../images/people.png';
 import heart from '../../images/heart.png';
 import logo from '../../images/logo.png';
 import logopic from '../../images/logopic.png';
+import { withFirebase } from 'react-redux-firebase'
 import './Header.css';
 
 class Header extends Component {
@@ -15,6 +16,9 @@ class Header extends Component {
         this.state = {
           collapsed: true
         };
+        this.handleLogout = () => {
+          this.props.firebase.logout();
+        }
       }
     
       toggleNavbar() {
@@ -28,7 +32,7 @@ class Header extends Component {
         <Navbar color="faded" light expand = "md">
           <NavbarBrand className="mr-auto">
             <span>
-            <img src = {logopic} alt = "brand" width = "40px" height = "40px" className = "logo"/>
+            <img src = {logopic} alt = "brand" width = "40px" height = "40px" className = "logoh"/>
             <span className="vl"></span>
             <img src={logo} alt="brandname" width = "120px" height = "40px" />
             </span>
@@ -43,15 +47,15 @@ class Header extends Component {
               <NavItem>
                   <img src={heart} alt="heart" width= "35px" height = "35px" className = "heart" />
               </NavItem>
-              <NavItem>
+              <NavItem onClick = {this.handleLogout}>
                   <img src={people} alt="heart" width= "35px" height = "35px" className = "people" />
               </NavItem>
             </Nav>
         </Navbar>
-        <hr className = "line"/>
+        <hr className = "lineh"/>
       </div>
     )
   }
 }
 
-export default Header;
+export default withFirebase(Header);

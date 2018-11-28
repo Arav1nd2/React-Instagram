@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Postpage from './components/Postpage';
 import {connect } from 'react-redux';
 import Auth from './components/auth/auth';
+import Notifications from 'react-notify-toast';
 
 class App extends Component {
   
@@ -9,6 +10,7 @@ class App extends Component {
   
     return (
      <div>
+       <Notifications />
        {this.props.loginState ? <Postpage /> : <Auth/>}
      </div>
     );
