@@ -28,6 +28,12 @@ class Auth extends Component {
             });
         
         }
+        this.handleFbLogin = () => {
+            this.props.firebase.login({
+                provider : "facebook",
+                type : "redirect"
+            });
+        }
     }
 
 
@@ -47,7 +53,7 @@ class Auth extends Component {
                             <h6 className="timeline">Or</h6>
                         </Container>
                         <br/>
-                            <span>
+                            <span onClick={this.handleFbLogin}>
                                 <img src={fb} alt="" width="15px" className = "fb"/>
                                  <div className="fbtext">Log in with Facebook</div> 
                             </span>

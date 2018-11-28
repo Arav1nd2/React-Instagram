@@ -7,7 +7,6 @@ import Notifications from 'react-notify-toast';
 class App extends Component {
   
   render() {
-  
     return (
      <div>
        <Notifications />
@@ -19,7 +18,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
     return {
-      loginState : !state.firebase.auth.isEmpty
+      loginState : !state.firebase.auth.isEmpty,
+      details : state.firebase
     }
 }
 

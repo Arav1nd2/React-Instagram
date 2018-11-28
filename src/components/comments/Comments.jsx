@@ -5,6 +5,8 @@ import * as moment from 'moment';
 import heart from '../../images/heart.png';
 import heart2 from '../../images/heart2.png';
 import comment from '../../images/comment.png';
+import {connect } from 'react-redux';
+import {compose} from 'redux';
 
 class Comments extends Component {
     constructor(props) {
@@ -24,7 +26,7 @@ class Comments extends Component {
         this.handleSubmit = (e) => {
             e.preventDefault();
             let newCom = {
-                username : "aravind",
+                username : this.props.userName,
                 text : this.state.newComment
             }
             let oldCom = this.state.comments;
@@ -33,15 +35,11 @@ class Comments extends Component {
                 newComment : "",
                 comments : oldCom
             });
-            this.props.firebase.set(`Posts/${this.props.postId}/comments/`,oldCom,()=>{
-                console.log("Comment added");
-            })
+            this.props.firebase.set(`Posts/${this.props.postId}/comments/`,oldCom);
         }
         this.handlelike = () => {
             if(this.state.likeState) {
-                this.props.firebase.set(`Posts/${this.props.postId}/likes/`,this.state.likes-1,(err)=>{
-                    console.log("likes updated");
-                });
+                this.props.firebase.set(`Posts/${this.props.postId}/likes/`,this.state.likes-1);
                 this.setState({
                     likes : this.state.likes-1
                 }); 
@@ -90,6 +88,9 @@ class Comments extends Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+    userName : state.firebase.profile.displayName
+})
 
 
-export default withFirebase(Comments);
+export default  compose(withFirebase,connect(mapStateToProps))(Comments);

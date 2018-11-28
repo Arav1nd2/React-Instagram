@@ -7,7 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { createStore ,compose } from 'redux';
 import {Provider} from 'react-redux';
 import { rootReducer } from './Reducer/rootReducer';
-import { reactReduxFirebase } from 'react-redux-firebase';
+import { reactReduxFirebase} from 'react-redux-firebase';
+
 import firebase from './firebase';
 
 const rrfConfig = {
